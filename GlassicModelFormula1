@@ -30,12 +30,17 @@ INNER JOIN products as p
 ON ord.productCode = p.productCode;
 
 SELECT ord.orderNumber , ord.productCode , p.productName ,
-ord.quantityOrdered , ord.priceEach , ord.quantityOrdered * ord.priceEach 
+ord.quantityOrdered , ord.priceEach , ord.quantityOrdered * ord.priceEach as total 
 FROM orderDetails as ord
 INNER JOIN products as p
 ON ord.productCode = p.productCode
 WHERE ord.orderNumber = 10145;
 
-
+DELIMITER //
+CREATE PROCEDURE getProducts()
+BEGIN
+ SELECT * FROM products;
+END //
+DELIMITER ;
 
 
