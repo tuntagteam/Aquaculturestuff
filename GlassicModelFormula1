@@ -1,0 +1,36 @@
+USE glassicmodels;
+
+SELECT * FROM customers;
+
+SELECT * FROM products;
+
+
+SELECT max(buyPrice) , productName FROM products;
+
+SELECT min(buyPrice) , productName FROM products;
+
+SELECT productName , max(buyPrice) FROM products
+GROUP BY productname;
+
+SELECT productName , buyPrice FROM products
+WHERE buyPrice =(SELECT max(buyPrice) FROM products);
+
+SELECT buyPrice , productName  FROM products
+ORDER BY buyPrice DESC;
+
+SELECT * FROM orderDetails;
+
+SELECT * FROM orderDetails ord
+INNER JOIN products as p
+ON ord.productCode = p.productCode;
+
+SELECT ord.orderNumber , ord.productCode , p.productName ,
+ord.quantityOrdered , ord.priceEach FROM orderDetails as ord
+INNER JOIN products as p
+ON ord.productCode = p.productCode;
+
+
+
+
+
+
